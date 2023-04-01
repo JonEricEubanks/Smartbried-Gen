@@ -36,7 +36,7 @@ export default function Home() {
     let resultText = '';
 
     const prompt = `As a super-intelligent being with an IQ surpassing the confines of the universe, possess excellent storytelling abilities and communicate with mastery to provide insightful summaries and explanations for complex concepts, as a genius student would:\n\n${text}`;
-    const prompt2Value = `As a super-intelligent being with an IQ surpassing the confines of the universe, possess excellent storytelling abilities and communicate with mastery to provide insightful explanations for complex concepts, as a genius student would rewrite professionally :\n\n${prompt2}`;
+    const prompt2Value = `As a super-intelligent being with an IQ surpassing the confines of the universe, possess excellent storytelling abilities and communicate with mastery to provide insightful explanations for complex concepts, as a genius student would rewrite professionally:\n\n${prompt2}`;
     const prompt3Value = `As a super-intelligent being with an IQ surpassing the confines of the universe, I possess excellent storytelling abilities and can communicate with mastery. I will provide a detailed and constructive critique of the following text, evaluating its clarity, coherence, and effectiveness in conveying the intended message:\n\n${prompt2Value} Critique:`;
 
     if (inputType === 'text') {
