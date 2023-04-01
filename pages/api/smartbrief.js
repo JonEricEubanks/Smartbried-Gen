@@ -6,10 +6,18 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 export default async function (req, res) {
-  const { text, size, image, imageSize } = req.body;
+  const { text, prompt2, prompt3, size, image, imageSize, input } = req.body;
+  const numImages = parseInt(req.body.numImages);
 
-  if (text) {
-    const prompt = `As a super-intelligent being with an IQ surpassing the confines of the universe, possess excellent storytelling abilities and communicate with mastery to provide insightful summaries and explanations for complex concepts, as a genius student would:\n\n${text}`;
+  if (text || prompt2 || prompt3 || input) {
+    const promptText = text ? text : input;
+    const promptPrefix = text
+      ? `As a super-intelligent communicator, I excel at summarizing complex concepts with genius-level insight and I will generate a summary that is both accurate and professional:`
+      : prompt2
+      ? `As a super-intelligent communicator, I excel at summarizing complex concepts with genius-level insight and I will rewrite more professionally for an email:`
+      : `As a super-intelligent communicator, I excel at summarizing complex concepts with genius-level insight. I will provide a detailed and constructive critique of the following text, evaluating its clarity, coherence, and effectiveness in conveying the intended message:`;
+
+    const prompt = `${promptPrefix}\n\n${promptText}`;
 
     const completion = await openai.createCompletion({
       model: 'text-davinci-003',
@@ -19,27 +27,35 @@ export default async function (req, res) {
       top_p: 1.0,
       frequency_penalty: 0.0,
       presence_penalty: 0.0,
+      best_of: 2,
     });
 
-    res.status(200).json({ result: completion.data.choices[0].text });
-  } else if (size) {
-    const imageSize = size === 'small' ? '256x256' : size === 'medium' ? '512x512' : '1024x1024';
+    return res.status(200).json({ result: completion.data.choices[0].text });
+  }
+ else if (size) {
+    const imageSize = size === 'small' ? '256x256' : size === 'medium' ? '512x512' : size === 'large' ? '1024x1024' : '512x512';
+
 
     try {
-      const prompt = `Generate ${imageSize} image and include as the main subject "${image}"`;
+      const prompt = `Generate a stunning realistic ${imageSize} images and include "${image}" as the main subject. The image should be composed in such a way that the viewer is drawn to the beauty of the image and they can take their eyes away bc it looks so realistic.`;
 
       const response = await openai.createImage({
         prompt: prompt,
-        n: 1,
-        size: imageSize,
+        n: numImages || 1,
+        size: size,
       });
 
-      const imageUrl = response.data.data[0].url;
+      console.log('Input image imageSize:',imageSize);
+      console.log('Input number:',numImages);
+      
+      
+      const imageUrls = response.data.data.map((img) => img.url);
 
       res.status(200).json({
         success: true,
-        data: imageUrl,
+        data: imageUrls,
       });
+      
     } catch (error) {
       if (error.response) {
         console.log(error.response.status);
@@ -55,10 +71,12 @@ export default async function (req, res) {
     }
   } else if (image) {
     try {
+      const model = 'image-alpha-001';
       const response = await openai.createImage({
         prompt: image,
-        n: 1,
+        n:  numImages || 1,
         size: imageSize,
+        model: model,
       });
       const imageUrl = response.data.data[0].url;
       res.status(200).json({
