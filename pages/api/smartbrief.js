@@ -37,7 +37,7 @@ export default async function (req, res) {
 
 
     try {
-      const prompt = `Generate a stunning realistic ${imageSize} images and include "${image}" as the main subject. The image should be composed in such a way that the viewer is drawn to the beauty of the image and they can take their eyes away bc it looks so realistic.`;
+      const prompt = `Generate a stunning realistic ${imageSize} images and include "${image}" as the main subject. The image should be composed in such a way that the viewer is drawn to the beauty of the image and they can take their eyes away bc it looks so realistic to them.`;
 
       const response = await openai.createImage({
         prompt: prompt,
