@@ -1,2 +1,2 @@
-import summary from './summary';
+import summary from './summary1';
 export default summary;
