@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Result.module.css";
+
 
 const Result = ({ inputType, result }) => {
   return (
@@ -10,3 +10,10 @@ const Result = ({ inputType, result }) => {
 };
 
 export default Result;
+
+
+
+
+
+
+

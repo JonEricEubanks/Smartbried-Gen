@@ -36,7 +36,7 @@ export default function Home() {
     let resultText = '';
 
     const prompt = `As a super-intelligent being with an IQ surpassing the confines of the universe, possess excellent storytelling abilities and communicate with mastery to provide insightful summaries and explanations for complex concepts, as a genius student would:\n\n${text}`;
-    const prompt2Value = `As a super-intelligent being with an IQ surpassing the confines of the universe, possess excellent storytelling abilities and communicate with mastery to provide insightful explanations for complex concepts, as a genius student would rewrite professionally:\n\n${prompt2}`;
+    const prompt2Value = `As a super-intelligent being with an IQ surpassing the confines of the universe, possess excellent storytelling abilities and communicate with mastery to provide insightful explanations for complex concepts, as a genius student would rewrite professionally :\n\n${prompt2}`;
     const prompt3Value = `As a super-intelligent being with an IQ surpassing the confines of the universe, I possess excellent storytelling abilities and can communicate with mastery. I will provide a detailed and constructive critique of the following text, evaluating its clarity, coherence, and effectiveness in conveying the intended message:\n\n${prompt2Value} Critique:`;
 
     if (inputType === 'text') {
@@ -106,7 +106,7 @@ export default function Home() {
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px' }}>
           <div style={{ textAlign: 'center' }}>
             <h3 style={{ color: 'white',fontFamily: "Lato, sans-serif"  }}>Your input is being analyzed, please wait a moment. </h3>
-            <img src={`${window.location.origin}/baby.jpg`} style={{ width: '300px', height: '400px' }} />
+            <img src={`${window.location.origin}/baby.jpg`} style={{ width: '350px', height: '450px' }} />
           </div>
         </div>
       )}
@@ -219,7 +219,7 @@ export default function Home() {
       <div style={{ backgroundColor: "white", fontFamily: "Lato, sans-serif" }}>
         <Head>
           <title>Smartbrief Text Summary / Image Generator</title>
-          <link rel="icon" href="/baby.jpg" />
+          <link rel="icon" href="/Gins.jpg" />
         </Head>
       </div>
     </div>
