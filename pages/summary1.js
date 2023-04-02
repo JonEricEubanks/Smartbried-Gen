@@ -1,5 +1,4 @@
 import Head from 'next/head'; // Import Head component from Next.js for setting the document head
-import React from 'react'; // Import React module
 import React, { useState } from 'react'; // Import useState hook from React for managing component state
 import styles from './index.module.css'; // Import CSS styles
 
