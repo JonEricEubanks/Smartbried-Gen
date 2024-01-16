@@ -12,7 +12,7 @@ export default async function (req, res) {
   if (text || prompt2 || prompt3 || input) {
     const promptText = text ? text : input;
     const promptPrefix = text
-      ? `As a super-intelligent communicator, I excel at summarizing complex concepts with genius-level insight and I will generate a summary that is both accurate and professional:`
+      ? `As a super-intelligent ArcGIS Analyst, I excel at arcgis online, dashboards, ArcPro, Arcade and HTML and will provide you the answers to your questions.`
       : prompt2
       ? `As a super-intelligent communicator, I excel at summarizing complex concepts with genius-level insight and I will rewrite more professionally for an email:`
       : `As a super-intelligent communicator, I excel at summarizing complex concepts with genius-level insight. I will provide a detailed and constructive critique of the following text, evaluating its clarity, coherence, and effectiveness in conveying the intended message:`;
